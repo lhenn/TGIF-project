@@ -1,0 +1,192 @@
+
+/*---------------------------general classes ---------------------------*/
+.vertical-align{
+  display:flex;
+  align-items:center;
+}
+
+.inline{
+  display:inline-block;
+}
+
+.outside-text {
+  font: 18px Gill Sans, sans-serif;
+}
+/*---------------------------general elements ---------------------------*/
+body {
+  background-image:linear-gradient(to bottom right, white, lightgrey);
+}
+
+p {
+  font: 18px serif;
+  margin:10px 0;
+}
+
+a {
+  font: 18px serif;
+}
+
+h2 {
+  font: 38px Gill Sans, sans-serif;
+  margin:25px 0;
+}
+
+h3 {
+  font: 32px Gill Sans, sans-serif;
+  margin:25px 0;
+}
+
+h4 {
+  font: 24px Gill Sans, sans-serif;
+
+}
+
+th {
+  font: 22px Gill Sans, sans-serif;
+}
+
+tr {
+font: 18px serif;
+}
+
+/*---------------------------header elements ---------------------------*/
+.header-container{
+  background-color: #99b8bf;
+}
+
+.logo{
+  height: 60px;
+  margin: 10px 0;
+}
+
+.header-title{
+  font: 29px Gill Sans, sans-serif;
+  margin:0;
+}
+
+.header-tagline{
+  font: 24px Gill Sans, sans-serif;
+  margin:0px;
+}
+
+#tagline-flourish{
+  font-size:16px;
+  padding-top:5px;
+}
+
+#email-link{
+  font: 18px Gill Sans, sans-serif;
+  color:grey;
+}
+
+/*---------------------------navbar elements ---------------------------*/
+/* #4056A1  #D79922*/
+
+.navbar-default{
+  background-color:inherit;
+  padding-top:20px;
+}
+
+
+.nav-option{
+  height:50px;
+  padding:0 15px;
+  font: 18px Gill Sans, sans-serif;
+}
+
+.active {
+  /* background-color:#4056A1; */
+}
+/*---------------------------section elements ---------------------------*/
+.inner-section {
+  padding-bottom:50px;
+}
+
+footer {
+  height:60px;
+  background-color:#99b8bf;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/*----------house/senate pages ----*/
+.data-section{
+  padding-right:50px;
+}
+
+.filter-section {
+  display:flex;
+  flex-direction:column;
+  width:250px;
+  box-shadow: 4px 10px 20px -6px rgba(0, 0, 0, 0.64);
+  margin-top:45px;
+}
+
+#filter-header-container{
+  background-color:#ffd966;
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  width:100%;
+}
+
+#filter-header{
+  padding-top:10px;
+  color:darkblue;
+}
+
+#filter-body-container{
+  background-color: #fcfcfc;
+  display:flex;
+  flex-direction:column;
+}
+
+.form-row {
+  margin: 20px 10px;
+}
+
+label {
+  color:darkblue;
+  font: 18px Gill Sans, sans-serif
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.checkbox-option{
+  display:flex;
+  direction:row;
+  margin: 5px 0;
+}
+
+.checkbox-label {
+  font: 16px serif;
+}
+
+#stateFilter {
+  height:200px;
+}
+
+select {
+  width: 70%;
+  font: 16px serif;
+}
+
+
+
+/*----------home page ----*/
+#gov-image {
+  margin-top: 40px;
+}
+
+.btn-info {
+ background-color:#ffd966;
+ border: 0;
+ border-radius:0;
+ color:darkblue;
+ padding:10px 15px;
+ margin-top:25px;
+ box-shadow: 2px 5px 10px -3px rgba(0, 0, 0, 0.64);
+}

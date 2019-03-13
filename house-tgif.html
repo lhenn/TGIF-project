@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title="senate-page">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/tgif.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row vertical-align header-container">
+      <div class="col-sm-1">
+        <img class="logo" src="https://docs.google.com/drawings/d/e/2PACX-1vRWuu3KiSOq2X9wzyA-T4Ck8_GaWmcjk9ccF-FVeVc2ZR4V7UnLNIgqiWnQmoCDoMKwNLxiH1rlHe7T/pub?w=599&amp;h=498">
+      </div>
+      <div class="col-sm-9">
+        <h3 class="header-title ">Transparent Government &nbsp <span class="header-tagline"><span class="glyphicon glyphicon-minus" id="tagline-flourish"></span>&nbsp In Fact &nbsp<span class="glyphicon glyphicon-minus" id="tagline-flourish"></span></span></h3>
+      </div>
+      <a class="col-sm-2 pull-right" id="email-link" href="google.com"><span class="glyphicon glyphicon-envelope"></span> info@tgif.net </a>
+    </div>
+    <nav class="navbar-default">
+      <ul class="nav nav-pills" role="tablist">
+        <li><a class="nav-option" href="index-tgif.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle nav-option" data-toggle="dropdown">
+            Congress 113 <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="senate-tgif.html">Senate</a></li>
+            <li class="active"><a href="house-tgif.html">House</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="row col-sm-8">
+      <h2>Congressmen</h2>
+      <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and
+        Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to
+        elect the U.S. President in case there is no majority in the Electoral College.</p>
+      <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
+    </div>
+    <div class="row">
+      <div class="col-sm-9">
+        <table class="table" id="rep-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Party</th>
+              <th>State</th>
+              <th>Years in Office</th>
+              <th>% Votes w/Party</th>
+            </tr>
+          </thead>
+          <tbody id="rep-table-body">
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <div class="filter-section">
+          <div id="filter-header-container">
+            <h4 id="filter-header">Filter Data</h4>
+          </div>
+          <div id="filter-body-container">
+            <div id="party-filter" class="form-row">
+              <label>Party</label><br>
+              <div class="checkbox-option">
+                <input id="democratFilter" type="checkbox" name="party" value="D">
+                <div class="checkbox-label">Democratic</div>
+              </div>
+              <div class="checkbox-option">
+                <input id="republicanFilter" type="checkbox" name="party" value="R">
+                <div class="checkbox-label">Republican</div>
+              </div>
+              <div class="checkbox-option">
+                <input id="independentFilter" type="checkbox" name="party" value="I">
+                <div class="checkbox-label">Independent</div>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>State</label><br>
+              <select id="stateFilter" multiple></select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="container-fluid bg-4 text-center">
+      <p><span class="glyphicon glyphicon-copyright-mark"></span>2016 TGIF | All Rights Reserved</p>
+    </footer>
+  </div>
+  <script src="pro-congress-113-house.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
