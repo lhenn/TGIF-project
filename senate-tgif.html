@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title="senate-page">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/tgif.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <title>senate-page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/tgif.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -30,8 +30,26 @@
             Congress 113 <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li class="active"><a href="senate-tgif.html">Senate</a></li>
+            <li class="active"><a>Senate</a></li>
             <li><a href="house-tgif.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle nav-option" data-toggle="dropdown">
+            Attendance <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="attendance-senate-tgif.html">Senate</a></li>
+            <li><a href="attendance-house-tgif.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle nav-option" data-toggle="dropdown">
+            Party Loyalty <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="partyloyalty-senate-tgif.html">Senate</a></li>
+            <li><a href="partyloyalty-house-tgif.html">House</a></li>
           </ul>
         </li>
       </ul>
@@ -64,34 +82,39 @@
             <h4 id="filter-header">Filter Data</h4>
           </div>
           <div id="filter-body-container">
-            <div id="party-filter" class="form-row">
-              <label>Party</label><br>
-              <div class="checkbox-option">
-                <input id="democratFilter" type="checkbox" name="party" value="D">
-                <div class="checkbox-label">Democratic</div>
+            <div id="filter-type-container" class="form-row">
+              <div id="party-filter" class="filter-type">
+                <label>Party</label><br>
+                <div class="checkbox-option">
+                  <input id="democratFilter" type="checkbox" name="party" value="D">
+                  <div class="checkbox-label">Democratic</div>
+                </div>
+                <div class="checkbox-option">
+                  <input id="republicanFilter" type="checkbox" name="party" value="R">
+                  <div class="checkbox-label">Republican</div>
+                </div>
+                <div class="checkbox-option">
+                  <input id="independentFilter" type="checkbox" name="party" value="I">
+                  <div class="checkbox-label">Independent</div>
+                </div>
               </div>
-              <div class="checkbox-option">
-                <input id="republicanFilter" type="checkbox" name="party" value="R">
-                <div class="checkbox-label">Republican</div>
-              </div>
-              <div class="checkbox-option">
-                <input id="independentFilter" type="checkbox" name="party" value="I">
-                <div class="checkbox-label">Independent</div>
+              <div class="filter-type">
+                <label>State</label><br>
+                <select id="stateFilter" multiple></select>
               </div>
             </div>
-            <div class="form-row">
-              <label>State</label><br>
-              <select id="stateFilter" multiple></select>
+            <div id="state-tag-container" class="form-row">
             </div>
           </div>
         </div>
       </div>
     </div>
-    <footer class="container-fluid bg-4 text-center">
-      <p><span class="glyphicon glyphicon-copyright-mark"></span>2016 TGIF | All Rights Reserved</p>
+    <footer class="row">
+      <p class="outside-text"><span class="glyphicon glyphicon-copyright-mark"></span>&nbsp 2016 TGIF | All Rights Reserved</p>
     </footer>
-    <script src="pro-congress-113-senate.js"></script>
-    <script src="main.js"></script>
+  </div>
+  <script src="pro-congress-113-senate.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

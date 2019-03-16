@@ -118,7 +118,7 @@ footer {
 .filter-section {
   display:flex;
   flex-direction:column;
-  width:250px;
+  /* width:350px; */
   box-shadow: 4px 10px 20px -6px rgba(0, 0, 0, 0.64);
   margin-top:45px;
 }
@@ -142,6 +142,18 @@ footer {
   flex-direction:column;
 }
 
+#filter-type-container{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:flex-start;
+  margin: 10px 20px;
+}
+
+.filter-type{
+  flex-grow:1;
+}
+
 .form-row {
   margin: 20px 10px;
 }
@@ -162,16 +174,39 @@ input[type="checkbox"] {
 }
 
 .checkbox-label {
-  font: 16px serif;
+  font: 18px serif;
 }
 
 #stateFilter {
-  height:200px;
+  height:150px;
+  width:100%;
+  font: 16px serif;
 }
 
-select {
-  width: 70%;
-  font: 16px serif;
+#state-tag-container{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+
+.state-tag{
+  display:flex;
+  flex-direction: row;
+  padding: 7px 0 7px 5px;
+  margin: 5px;
+  color:white;
+  background-color:#70c4cc;
+  border-radius: 7px;
+}
+
+.state-name{
+  font: 15px sans-serif;
+}
+
+.tag-x{
+  background-color:inherit;
+  border: none;
+  font: 12px sans-serif;
 }
 
 
