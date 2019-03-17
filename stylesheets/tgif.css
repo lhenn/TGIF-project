@@ -163,20 +163,6 @@ label {
   font: 18px Gill Sans, sans-serif
 }
 
-input[type="checkbox"] {
-  margin-right: 5px;
-}
-
-.checkbox-option{
-  display:flex;
-  direction:row;
-  margin: 5px 0;
-}
-
-.checkbox-label {
-  font: 18px serif;
-}
-
 #stateFilter {
   height:150px;
   width:100%;
@@ -187,6 +173,7 @@ input[type="checkbox"] {
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
+  margin-top: 0;
 }
 
 .state-tag{
@@ -203,10 +190,41 @@ input[type="checkbox"] {
   font: 15px sans-serif;
 }
 
+#party-tag-container{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  margin-bottom: 0;
+}
+#partyFilter {
+
+  width: 80%;
+  font: 16px serif;
+}
+
+.party-tag{
+  display:flex;
+  flex-direction: row;
+  padding: 7px 0 7px 5px;
+  margin: 5px;
+  color:white;
+  background-color:#cc82ca;
+  border-radius: 7px;
+}
+
+.party-name{
+  font: 15px sans-serif;
+}
+
 .tag-x{
   background-color:inherit;
   border: none;
   font: 12px sans-serif;
+}
+
+.tag-x:hover{
+  font-size: 14px;
+  font-weight:bold;
 }
 
 

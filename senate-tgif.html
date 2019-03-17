@@ -83,25 +83,21 @@
           </div>
           <div id="filter-body-container">
             <div id="filter-type-container" class="form-row">
-              <div id="party-filter" class="filter-type">
+              <div class="filter-type">
                 <label>Party</label><br>
-                <div class="checkbox-option">
-                  <input id="democratFilter" type="checkbox" name="party" value="D">
-                  <div class="checkbox-label">Democratic</div>
-                </div>
-                <div class="checkbox-option">
-                  <input id="republicanFilter" type="checkbox" name="party" value="R">
-                  <div class="checkbox-label">Republican</div>
-                </div>
-                <div class="checkbox-option">
-                  <input id="independentFilter" type="checkbox" name="party" value="I">
-                  <div class="checkbox-label">Independent</div>
-                </div>
+                <select id="partyFilter" multiple>
+                  <option value="All">All</option>
+                  <option value="Democratic">Democratic</option>
+                  <option value="Republican">Republican</option>
+                  <option value="Independent">Independent</option>
+                </select>
               </div>
               <div class="filter-type">
                 <label>State</label><br>
                 <select id="stateFilter" multiple></select>
               </div>
+            </div>
+            <div id="party-tag-container" class="form-row">
             </div>
             <div id="state-tag-container" class="form-row">
             </div>

@@ -1,104 +1,130 @@
 
 //------------------Congress 113 Senate/House Pages-------------------------//
 var membersPath = congressData.results[0].members;
-
-//party checkboxes
-var democratFilter = document.getElementById("democratFilter");
-var republicanFilter = document.getElementById("republicanFilter");
-var independentFilter = document.getElementById("independentFilter");
+var partyFilter = document.getElementById("partyFilter");
 var stateFilter = document.getElementById("stateFilter");
 
-partyFilters = [democratFilter, republicanFilter, independentFilter];
-
-//add event listeners to all party checkboxes to filter when clicked
-//and set all to checked when page is loaded
-for(var i = 0; i < partyFilters.length; i++) {
-  partyFilters[i].addEventListener("click", function() {
-    createTable(filter());
-  })
-  partyFilters[i].checked = true;
-}
+partyFilter.addEventListener("change", function() {
+  createTags("party", "none");
+  createTable(filter());
+})
 
 stateFilter.addEventListener("change", function() {
-  createStateTags("none");
+  createTags("state", "none");
   createTable(filter());
 })
 
 populateStateOptions();
 
-//ensure all states are selected when loading page
-stateFilter.selectedIndex = "0";
-createStateTags("none");
+//ensure all options are selected when loading page
+// partyFilter.selectedIndex = "0";
+// createTags("party", "none");
+// console.log("party tags created");
+//
+// stateFilter.selectedIndex = "0";
+// createTags("state", "none");
+// console.log("state tags created");
 
 createTable(membersPath);
 
-//get all unique states from unfiltered members data
-function populateStateOptions(states) {
-  var states = [];
-  for (var i = 0; i < membersPath.length; i++) {
-    if (!states.includes(membersPath[i].state)) {
-      states.push(membersPath[i].state);
-    }
+// This function creates tags based on which options are selected. Its first argument
+// takes the type of tag that should be created. Its second argument takes
+// an exception, which is generated when a tag is exed-out. If you are just adding
+// tags and not removing, the argument should be "none".
+function createTags(type, exception) {
+  if (type == "state") {
+    tagDiv = document.getElementById("state-tag-container");
+    var existingTags = Array.from(document.getElementsByClassName("state-name")).map(elt => elt.innerHTML);
+    var selectedOptions = Array.from(document.querySelectorAll('#stateFilter option:checked')).map(opt => opt.value);
   }
-  states = states.sort();
-  states.unshift("All");
-  var select = document.getElementById("stateFilter");
-  for (var i = 0; i < states.length; i++) {
-    var option = document.createElement('option');
-    option.value = states[i];
-    option.innerHTML = states[i];
-    select.appendChild(option);
+  if (type == "party") {
+    tagDiv = document.getElementById("party-tag-container");
+    var existingTags = Array.from(document.getElementsByClassName("party-name")).map(elt => elt.innerHTML);
+    var selectedOptions = Array.from(document.querySelectorAll('#partyFilter option:checked')).map(opt => opt.value);
   }
-}
-
-// This function creates tags based on whch states are selected. It's argument takes
-// an exception, which is generated when a state tag is exed-out. If you are just adding
-// states and not removing, the argument should be "none".
-function createStateTags(exception) {
-  tagDiv = document.getElementById("state-tag-container");
-  var existingTags = Array.from(document.getElementsByClassName("state-name")).map(elt => elt.innerHTML);
-  var selectedStates = Array.from(document.querySelectorAll('#stateFilter option:checked')).map(opt => opt.value);
   // in the case that a tag has been ex'd out:
   if (exception != "none") {
     tagDiv.innerHTML = "";
-    selectedStates = existingTags;
-    var exceptionIndex = selectedStates.indexOf(exception);
-    selectedStates.splice(exceptionIndex, 1);
+    selectedOptions = existingTags;
+    var exceptionIndex = selectedOptions.indexOf(exception);
+    selectedOptions.splice(exceptionIndex, 1);
   }
-  console.log("selectedStates: ", selectedStates);
-  if (selectedStates.includes("All")) {
-      tagDiv.innerHTML = "";
-      selectedStates = Array.from(document.querySelectorAll('#stateFilter option')).map(opt => opt.value);
-      //get rid of "all" in the array
-      selectedStates.splice(0, 1);
+  if (selectedOptions.includes("All")) {
+    tagDiv.innerHTML = "";
+    if (type == "state") {
+      selectedOptions = Array.from(document.querySelectorAll('#stateFilter option')).map(opt => opt.value);
     }
-  for (var i = 0; i < selectedStates.length; i++) {
-    if ( (exception == "none" && !existingTags.includes(selectedStates[i]) ) ||
-    exception != "none") {
-      var stateTag = document.createElement("div");
-      stateTag.className = "state-tag";
-      var stateName = document.createElement("div");
-      stateName.className = "state-name";
+    if (type == "party") {
+      selectedOptions = Array.from(document.querySelectorAll('#partyFilter option')).map(opt => opt.value);
+    }
+    //get rid of "all" in the array
+    selectedOptions.splice(0, 1);
+  }
+  for (var i = 0; i < selectedOptions.length; i++) {
+    if ((exception == "none" && !existingTags.includes(selectedOptions[i])) ||
+      exception != "none") {
+      var optionTag = document.createElement("div");
+      var tagName = document.createElement("div");
+      if (type == "state") {
+        optionTag.className = "state-tag";
+        tagName.className = "state-name";
+      }
+      if (type == "party") {
+        optionTag.className = "party-tag";
+        tagName.className = "party-name";
+      }
       var tagX = document.createElement("button");
       tagX.className = "tag-x";
       tagX.addEventListener("click", function() {
         removeTag();
       });
-      stateName.innerHTML = selectedStates[i];
+      tagName.innerHTML = selectedOptions[i];
       tagX.innerHTML = "x";
-      stateTag.appendChild(stateName);
-      stateTag.appendChild(tagX);
-      tagDiv.appendChild(stateTag);
+      optionTag.appendChild(tagName);
+      optionTag.appendChild(tagX);
+      tagDiv.appendChild(optionTag);
     }
   }
 }
 
 function removeTag() {
-  console.log(event.target.parentElement);
-  var stateTag = event.target.parentElement;
-  var removedStateName = stateTag.childNodes[0].innerText;
-  createStateTags(removedStateName);
+  var optionTag = event.target.parentElement;
+  if(optionTag.className == "party-tag") {
+    type = "party";
+  }
+  if(optionTag.className == "state-tag") {
+    type = "state";
+  }
+  var removedTagName = optionTag.childNodes[0].innerText;
+  createTags(type, removedTagName);
   createTable(filter());
+}
+
+function filter() {
+  filteredMembersArray = [];
+  //get all selected party values from existing state tags
+  var partyFilters = Array.from(document.getElementsByClassName("party-name")).map(elt => elt.innerHTML);
+  for(var i = 0; i < partyFilters.length; i++) {
+    if(partyFilters[i] == "Democratic") {partyFilters[i] = "D"}
+    if(partyFilters[i] == "Republican") {partyFilters[i] = "R"}
+    if(partyFilters[i] == "Independent") {partyFilters[i] = "I"}
+  }
+  if(partyFilters.length == 0) {
+    partyFilters = ["D","R","I"];
+  }
+  //get all selected state values from existing state tags
+  var stateFilters = Array.from(document.getElementsByClassName("state-name")).map(elt => elt.innerHTML);
+  if(stateFilters.length == 0) {
+    stateFilters = Array.from(document.querySelectorAll('#stateFilter option')).map(opt => opt.value)
+  }
+  console.log("stateFilters: ", stateFilters, "partyFilters: ", partyFilters);
+  for (var i = 0; i < membersPath.length; i++) {
+      if ( partyFilters.includes(membersPath[i].party) && stateFilters.includes(membersPath[i].state) ) {
+        filteredMembersArray.push(membersPath[i]);
+      }
+    }
+  console.log(filteredMembersArray);
+  return filteredMembersArray;
 }
 
 // accepts array of members objects (e.g. membersPath or filtered version)
@@ -129,18 +155,21 @@ function createTable(data) {
   table.appendChild(tbody);
 }
 
-function filter() {
-  filteredMembersArray = [];
-  //get all checked party values
-  partyFilters = Array.from(document.querySelectorAll('input[name=party]:checked')).map(elt => elt.value);
-  //get all selected state values from existing state tags
-  var stateFilters = Array.from(document.getElementsByClassName("state-name")).map(elt => elt.innerHTML);
-  console.log("stateFilters: ", stateFilters);
+//get all unique states from unfiltered members data
+function populateStateOptions(states) {
+  var states = [];
   for (var i = 0; i < membersPath.length; i++) {
-      if (partyFilters.includes(membersPath[i].party) &&
-      (stateFilters.includes(membersPath[i].state) || stateFilters.includes("All"))) {
-        filteredMembersArray.push(membersPath[i]);
-      }
+    if (!states.includes(membersPath[i].state)) {
+      states.push(membersPath[i].state);
     }
-  return filteredMembersArray;
+  }
+  states = states.sort();
+  states.unshift("All");
+  var select = document.getElementById("stateFilter");
+  for (var i = 0; i < states.length; i++) {
+    var option = document.createElement('option');
+    option.value = states[i];
+    option.innerHTML = states[i];
+    select.appendChild(option);
+  }
 }
